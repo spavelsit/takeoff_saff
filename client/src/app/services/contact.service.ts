@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, Contact } from '../interfaces';
 import { concatAll } from 'rxjs/operators';
@@ -14,8 +14,12 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
-  public get(): Observable<Contact[]> {
-    return this.http.get<Contact[]>('/api/v1/contacts')
+  public get(params = {}): Observable<Contact[]> {
+    return this.http.get<Contact[]>('/api/v1/contacts', {
+      params: new HttpParams({
+        fromObject: params
+      })
+    })
   }
 
   public create(contact: Contact): Observable<Contact> {

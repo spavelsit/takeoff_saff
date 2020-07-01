@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ContactModuleComponent } from 'src/app/modules/contact-module/contact-module.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Contact } from 'src/app/interfaces';
-import { Subscription } from 'rxjs';
+import { Subscription, observable } from 'rxjs';
 import { ContactService } from 'src/app/services/contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,6 +17,8 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
 
   oSub: Subscription
 
+  search: string = null
+
   constructor(
     public dialog: MatDialog,
     public contactService: ContactService,
@@ -24,6 +26,10 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.fetch()
+  }
+
+  fetch() {
     this.oSub = this.contactService.get().subscribe(contacts => {
       this.contactService.array = contacts
     })
@@ -44,6 +50,22 @@ export class ContactsPageComponent implements OnInit, OnDestroy {
       this.contactService.array.splice(idx, 1)
       this.snackBar.open('Контакт успешно удален')
     })
+  }
+
+  onSearch($event): void {
+    const params = {
+      name_like: $event.target.value
+    }
+
+    this.oSub = this.contactService.get(params).subscribe(contacts => {
+      this.contactService.array = contacts
+    })
+  }
+
+  onClearSearch() {
+    if (this.search.length === 0 ) return
+    this.search = null
+    this.fetch()
   }
 
   ngOnDestroy() {

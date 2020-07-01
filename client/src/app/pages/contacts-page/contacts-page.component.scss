@@ -36,7 +36,15 @@
 }
 
 .scroll-bar {
-  height: calc(100vh - 125px);
+  height: calc(100vh - 200px);
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.search {
+  width: 100%;
+  mat-icon {
+    user-select: none;
+    cursor: pointer;
+  }
 }
