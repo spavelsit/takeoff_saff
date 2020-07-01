@@ -1,0 +1,14 @@
+mat-form-field {
+  width: 100%;
+}
+.row {
+  display: flex;
+  margin-top: 20px;
+  & > *:not(:last-child) {
+    margin-right: 15px;
+  }
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}

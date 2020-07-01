@@ -1,0 +1,42 @@
+.main-card {
+  width: 720px;
+  &__icon {
+    font-size: 40px;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    & > * {
+      width: 50%;
+    }
+
+    .title {
+      color: #00000060;
+    }
+  }
+
+  &__buttons {
+    float: right;
+    & > *:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
+
+
+.mat-card-header {
+  button {
+    position: absolute;
+    right: 10px;
+    padding: 0;
+    min-width: 40px;
+  }
+}
+
+.scroll-bar {
+  height: calc(100vh - 125px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}

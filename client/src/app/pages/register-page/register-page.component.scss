@@ -1,0 +1,17 @@
+.auth-card {
+  width: 400px;
+  &__icon {
+    font-size: 40px;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card-actions {
+  text-align: right;
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}

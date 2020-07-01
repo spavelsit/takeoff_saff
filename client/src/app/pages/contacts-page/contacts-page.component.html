@@ -1,0 +1,54 @@
+<div class="main-card">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar><mat-icon class="main-card__icon">group</mat-icon></div>
+      <mat-card-title>Контакты</mat-card-title>
+      <mat-card-subtitle>Список контактов сотрудников</mat-card-subtitle>
+      <button mat-flat-button color="primary" matTooltip="Добавить контакт" (click)="openModal()"><mat-icon>add</mat-icon></button>
+    </mat-card-header>
+    <mat-card-content>
+      <ngx-simplebar  class="scroll-bar" *ngIf="contactService.array.length !== 0">
+        <mat-accordion>
+          <mat-expansion-panel 
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+            *ngFor="let contact of contactService.array"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{contact.name}}
+              </mat-panel-title>
+              <mat-panel-description>
+                +7 {{contact.phone}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ul class="main-card__list">
+              <li>
+                <p class="title">Имя:</p> 
+                <p class="descr">{{contact.name}}</p>
+              </li>
+              <li>
+                <p class="title">Телефон:</p> 
+                <p class="descr">+7 {{contact.phone}}</p>
+              </li>
+              <li>
+                <p class="title">E-mail:</p> 
+                <p class="descr">{{contact.email}}</p>
+              </li>
+              <li>
+                <p class="title">Адрес</p> 
+                <p class="descr">{{contact.address}}</p>
+              </li>
+            </ul>
+    
+            <div class="main-card__buttons">
+              <button mat-flat-button color="warn" (click)="onDelete(contact)" matTooltip="Удалить"><mat-icon>close</mat-icon></button>
+              <button mat-flat-button color="primary" (click)="openModal('edit', contact)" matTooltip="Редактировать"><mat-icon>edit</mat-icon></button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ngx-simplebar>
+      <h2 *ngIf="contactService.array.length === 0">Список контактов пуст</h2>
+    </mat-card-content>
+  </mat-card>
+</div>

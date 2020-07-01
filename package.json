@@ -1,0 +1,22 @@
+{
+  "name": "takeoff_saff",
+  "version": "1.0.0",
+  "description": "Тестового задания от Takeoff Saff",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dev --prefix ./server",
+    "client-install": "npm i --prefix ./client",
+    "server-install": "npm i --prefix ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thejokermsk/takeoff_saff.git"
+  },
+  "author": "Pavel Sinitsin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thejokermsk/takeoff_saff/issues"
+  },
+  "homepage": "https://github.com/thejokermsk/takeoff_saff#readme",
+  "dependencies": {}
+}
